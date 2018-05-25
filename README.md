@@ -18,29 +18,17 @@ minSdkVersion = '23'
 Example
 -------
 
-First, You need to bind your items with SliderAdapter
-
-public class YourSliderAdapter extends SliderAdapter<OBJ>
-{
-    public ImageSlider(Context context) {
-        super(context);
-    }
-
-    public ImageSlider(Context context, ArrayList<OBJ> itemList) {
-        super(context, itemList);
-    }
+First, You need to bind your views with new SliderAdapter
 
     @Override
     public void onCreateView(ViewGroup container) {
-        View view = createView(R.layout.view_header, container);
+        View view = createView(R.layout.item_view, container);
     }
 
     @Override
     public void onBindView(ViewGroup container, int position) {
-        // bind your items here
+        // bind your views here
     }
-}
-
 
 In MainActivity.java
 
@@ -64,4 +52,4 @@ In activity_main.xml
 	  
 Screenshot
 ----------
-<img src="screenshot/screenshot.jpg" width=360 height=640>
+<img src="screenshot/screenshot.jpg" width=360 height=716>
