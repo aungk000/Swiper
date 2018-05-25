@@ -40,6 +40,8 @@ In MainActivity.java
         slider.setAdapter(new SliderAdapter());
         slider.setDotIndicator(DotIndicator.ALIGN_BOTTOM);
         slider.setPageTransformer(new DepthPageTransformer());
+	  // There are two default page transformers 
+	  // DepthPageTransformer and ZoomOutPageTransformer
     }
     
 In activity_main.xml
