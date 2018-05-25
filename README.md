@@ -52,4 +52,4 @@ In activity_main.xml
 	  
 Screenshot
 ----------
-<img src="screenshot/screenshot.jpg" width=360 height=716>
+![screenshot](/screenshot/screenshot.jpg)
