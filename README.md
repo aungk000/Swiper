@@ -1,9 +1,9 @@
 # Slider
-Android library for sliding views with default indicator (dot) and view transitions.
+Android library for sliding views with default indicators and view transitions.
 
 Usage
 -----
-Import the library ('slider') from your project and
+Import the library ('slider') from your project.
 
 In app/gradle.build
 
@@ -13,7 +13,7 @@ dependencies {
 }
 ```
 
-minSdkVersion = '23'
+minSdkVersion = '21'
 
 Example
 -------
@@ -21,8 +21,9 @@ Example
 First, You need to bind your views with new SliderAdapter
 
     @Override
-    public void onCreateView(ViewGroup container) {
+    public View onCreateView(ViewGroup container) {
         View view = createView(R.layout.item_view, container);
+	  return view;
     }
 
     @Override
@@ -37,11 +38,9 @@ In MainActivity.java
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        slider.setAdapter(new SliderAdapter());
-        slider.setDotIndicator(DotIndicator.ALIGN_BOTTOM);
-        slider.setPageTransformer(new DepthPageTransformer());
-	  // There are two default page transformers 
-	  // DepthPageTransformer and ZoomOutPageTransformer
+        sliderHeader.setAdapter(new ImageSlider(this, itemList));
+        sliderHeader.setIndicator(new DotIndicator());
+        sliderHeader.setPageTransformer(new DepthPageTransformer());
     }
     
 In activity_main.xml
@@ -52,6 +51,35 @@ In activity_main.xml
         android:layout_height="match_parent"/>
 
 	  
-Screenshot
+Indicators
 ----------
-![screenshot](/screenshot/screenshot.jpg)
+There are two default indicators: DotIndicator and BarIndicator
+
+Dot Indicator
+
+![screenrecord](/resource/default_indicator.gif)
+
+Custom Indicator
+
+You can set your custom indicator as
+
+	slider.setIndicator(new Indicator(
+                this, R.drawable.ic_active, R.drawable.ic_inactive));
+
+![screenrecord](/resource/custom_indicator.gif)
+
+Page Transformers
+-----------------
+There are two default page transformers: DepthPageTransformer and ZoomOutPageTransformer
+
+You can create your own page transformer as
+
+`
+public class YourTransformer implements ViewPager.PageTransformer
+{
+    @Override
+    public void transformPage(@NonNull View page, float position) {
+        // animate view here
+    }
+}
+`

@@ -14,7 +14,6 @@ import java.security.InvalidParameterException;
 public class Slider extends RelativeLayout
 {
     private ViewPager viewPager;
-    private DotIndicator dotIndicator;
     private SliderAdapter sliderAdapter;
 
     public Slider(Context context) {
@@ -46,20 +45,25 @@ public class Slider extends RelativeLayout
         sliderAdapter = adapter;
     }
 
-    public void setDotIndicator(int align)
+    public void setIndicator(Indicator indicator, int align)
     {
         if(sliderAdapter == null) {
             throw new InvalidParameterException("Adapter must not be null");
         }
 
-        int dotCount = sliderAdapter.getCount();
-        dotIndicator = new DotIndicator(getContext(), dotCount);
-        dotIndicator.setViewPager(viewPager);
+        indicator.setChildViews(sliderAdapter.getCount());
+        indicator.setOnPageChangeListener(viewPager);
 
         RelativeLayout.LayoutParams params = getChildLayoutParams();
         params.addRule(align);
         params.setMargins(0, 32, 0, 32);
-        addView(dotIndicator, params);
+
+        addView(indicator, params);
+    }
+
+    public void setIndicator(Indicator indicator)
+    {
+        setIndicator(indicator, ALIGN_PARENT_BOTTOM);
     }
 
     public void setPageTransformer(ViewPager.PageTransformer pageTransformer)

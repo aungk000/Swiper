@@ -2,6 +2,7 @@ package me.aungkooo.imageslider;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.aungkooo.slider.DepthPageTransformer;
 import me.aungkooo.slider.DotIndicator;
+import me.aungkooo.slider.Indicator;
 import me.aungkooo.slider.Slider;
 import me.aungkooo.slider.ZoomOutPageTransformer;
 
@@ -36,7 +38,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         sliderHeader.setAdapter(new ImageSlider(this, itemList));
-        sliderHeader.setDotIndicator(DotIndicator.ALIGN_BOTTOM);
+        sliderHeader.setIndicator(new Indicator(
+                this, R.drawable.ic_favorite, R.drawable.ic_favorite_border));
         sliderHeader.setPageTransformer(new DepthPageTransformer());
     }
 }

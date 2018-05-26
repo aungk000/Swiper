@@ -18,7 +18,7 @@ public abstract class SliderAdapter<OBJ> extends PagerAdapter
 {
     private Context context;
     private ArrayList<OBJ> itemList;
-    private View layoutView;
+    private View view;
 
     public SliderAdapter(Context context) {
         this.context = context;
@@ -48,24 +48,24 @@ public abstract class SliderAdapter<OBJ> extends PagerAdapter
         return context;
     }
 
-    public View getLayoutView() {
-        return layoutView;
+    public View getView() {
+        return view;
     }
 
     public View createView(@LayoutRes int resId, ViewGroup container)
     {
-        layoutView = LayoutInflater.from(context).inflate(resId, container, false);
-        return layoutView;
+        view = LayoutInflater.from(context).inflate(resId, container, false);
+        return view;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        onCreateView(container);
+        View view = onCreateView(container);
         onBindView(container, position);
 
-        container.addView(layoutView);
-        return layoutView;
+        container.addView(view);
+        return view;
     }
 
     @Override
@@ -83,6 +83,6 @@ public abstract class SliderAdapter<OBJ> extends PagerAdapter
         container.removeView((View) object);
     }
 
-    public abstract void onCreateView(ViewGroup container);
+    public abstract View onCreateView(ViewGroup container);
     public abstract void onBindView(ViewGroup container, int position);
 }

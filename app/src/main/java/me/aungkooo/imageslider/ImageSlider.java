@@ -38,9 +38,11 @@ public class ImageSlider extends SliderAdapter<HeaderItem>
     }
 
     @Override
-    public void onCreateView(ViewGroup container) {
+    public View onCreateView(ViewGroup container) {
         View view = createView(R.layout.view_header, container);
         ButterKnife.bind(this, view);
+
+        return view;
     }
 
     @Override
