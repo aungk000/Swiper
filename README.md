@@ -74,9 +74,11 @@ There are two default page transformers: *DepthPageTransformer* and *ZoomOutPage
 
 You can create your own page transformer as
 
+```java
 public class YourTransformer implements ViewPager.PageTransformer {
     @Override
     public void transformPage(@NonNull View page, float position) {
         // animate view here
     }
 }
+```
