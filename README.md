@@ -23,7 +23,7 @@ First, You need to bind your views with new SliderAdapter
     @Override
     public View onCreateView(ViewGroup container) {
         View view = createView(R.layout.item_view, container);
-	  return view;
+        return view;
     }
 
     @Override
@@ -74,10 +74,9 @@ There are two default page transformers: *DepthPageTransformer* and *ZoomOutPage
 
 You can create your own page transformer as
 
-   `public class YourTransformer implements ViewPager.PageTransformer
-    {
-        @Override
-        public void transformPage(@NonNull View page, float position) {
-            // animate view here
-        }
-    }`
+public class YourTransformer implements ViewPager.PageTransformer {
+    @Override
+    public void transformPage(@NonNull View page, float position) {
+        // animate view here
+    }
+}
