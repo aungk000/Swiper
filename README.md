@@ -53,13 +53,13 @@ In activity_main.xml
 	  
 Indicators
 ----------
-There are two default indicators: DotIndicator and BarIndicator
+There are two default indicators: *DotIndicator* and *BarIndicator*
 
-Dot Indicator
+**Dot Indicator**
 
 ![screenrecord](/resource/default_indicator.gif)
 
-Custom Indicator
+**Custom Indicator**
 
 You can set your custom indicator as
 
@@ -70,16 +70,14 @@ You can set your custom indicator as
 
 Page Transformers
 -----------------
-There are two default page transformers: DepthPageTransformer and ZoomOutPageTransformer
+There are two default page transformers: *DepthPageTransformer* and *ZoomOutPageTransformer*
 
 You can create your own page transformer as
 
-`
-public class YourTransformer implements ViewPager.PageTransformer
-{
-    @Override
-    public void transformPage(@NonNull View page, float position) {
-        // animate view here
-    }
-}
-`
+   `public class YourTransformer implements ViewPager.PageTransformer
+    {
+        @Override
+        public void transformPage(@NonNull View page, float position) {
+            // animate view here
+        }
+    }`
