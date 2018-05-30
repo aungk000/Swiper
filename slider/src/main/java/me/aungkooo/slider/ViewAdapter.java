@@ -14,18 +14,18 @@ import java.util.ArrayList;
  * Created by Ko Oo on 25/5/2018.
  */
 
-public abstract class SliderAdapter<OBJ> extends PagerAdapter
+public abstract class ViewAdapter<OBJ> extends PagerAdapter
 {
     private Context context;
     private ArrayList<OBJ> itemList;
     private View view;
 
-    public SliderAdapter(Context context) {
+    public ViewAdapter(Context context) {
         this.context = context;
         this.itemList = new ArrayList<>();
     }
 
-    public SliderAdapter(Context context, ArrayList<OBJ> itemList) {
+    public ViewAdapter(Context context, ArrayList<OBJ> itemList) {
         this.context = context;
         this.itemList = itemList;
     }
@@ -39,8 +39,7 @@ public abstract class SliderAdapter<OBJ> extends PagerAdapter
         return itemList;
     }
 
-    public OBJ getItem(int position)
-    {
+    public OBJ getItem(int position) {
         return itemList.get(position);
     }
 
@@ -52,17 +51,17 @@ public abstract class SliderAdapter<OBJ> extends PagerAdapter
         return view;
     }
 
-    public View createView(@LayoutRes int resId, ViewGroup container)
-    {
-        view = LayoutInflater.from(context).inflate(resId, container, false);
-        return view;
+    public View createView(@LayoutRes int resId, ViewGroup container) {
+        return LayoutInflater.from(context).inflate(resId, container, false);
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = onCreateView(container);
-        onBindView(container, position);
+        view = onCreateView(container);
+
+        final OBJ item = getItem(position);
+        onBindView(container, item, position);
 
         container.addView(view);
         return view;
@@ -84,5 +83,5 @@ public abstract class SliderAdapter<OBJ> extends PagerAdapter
     }
 
     public abstract View onCreateView(ViewGroup container);
-    public abstract void onBindView(ViewGroup container, int position);
+    public abstract void onBindView(ViewGroup container, final OBJ item, int position);
 }

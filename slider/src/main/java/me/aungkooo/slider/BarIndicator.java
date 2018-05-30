@@ -15,15 +15,16 @@ public class BarIndicator extends Indicator
         super(context, R.drawable.bar_active, R.drawable.bar_inactive);
     }
 
-    private BarIndicator(Context context, @Nullable AttributeSet attrs) {
+    public BarIndicator(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        setIconDrawables(R.drawable.bar_active, R.drawable.bar_inactive);
     }
 
-    private BarIndicator(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public BarIndicator(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    private BarIndicator(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public BarIndicator(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 }

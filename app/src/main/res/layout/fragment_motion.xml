@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/relative_layout_motion"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/img_motion"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/txt_motion"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_normal"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/padding_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
+

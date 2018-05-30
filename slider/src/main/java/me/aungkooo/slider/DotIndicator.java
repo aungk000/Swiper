@@ -14,15 +14,16 @@ public class DotIndicator extends Indicator
         super(context, R.drawable.dot_active, R.drawable.dot_inactive);
     }
 
-    private DotIndicator(Context context, @Nullable AttributeSet attrs) {
+    public DotIndicator(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        setIconDrawables(R.drawable.dot_active, R.drawable.dot_inactive);
     }
 
-    private DotIndicator(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DotIndicator(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    private DotIndicator(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public DotIndicator(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 }

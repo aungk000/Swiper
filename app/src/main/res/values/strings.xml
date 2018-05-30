@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Image Slider</string>
+
+    <string name="material_design_principles_bold">Material Design Principles Bold</string>
+    <string name="material_design_principles_metaphor">Material Design Principles Metaphor</string>
+    <string name="material_design_principles_motion">Material Design Principles Motion</string>
 </resources>

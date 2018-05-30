@@ -1,23 +1,26 @@
 package me.aungkooo.imageslider;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.aungkooo.imageslider.fragment.BoldFragment;
+import me.aungkooo.imageslider.fragment.MetaphorFragment;
+import me.aungkooo.imageslider.fragment.MotionFragment;
 import me.aungkooo.slider.DepthPageTransformer;
 import me.aungkooo.slider.DotIndicator;
 import me.aungkooo.slider.Indicator;
 import me.aungkooo.slider.Slider;
-import me.aungkooo.slider.ZoomOutPageTransformer;
 
 public class MainActivity extends AppCompatActivity
 {
-    @BindView(R.id.slider_header)
-    Slider sliderHeader;
+    @BindView(R.id.slider)
+    Slider slider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +40,13 @@ public class MainActivity extends AppCompatActivity
             itemList.add(new HeaderItem(titles[i], images[i]));
         }
 
-        sliderHeader.setAdapter(new ImageSlider(this, itemList));
-        sliderHeader.setIndicator(new Indicator(
-                this, R.drawable.ic_favorite, R.drawable.ic_favorite_border));
-        sliderHeader.setPageTransformer(new DepthPageTransformer());
+        ArrayList<Fragment> fragmentList = new ArrayList<>();
+        Fragment[] fragments = {new BoldFragment(), new MetaphorFragment(), new MotionFragment()};
+        Collections.addAll(fragmentList, fragments);
+
+        slider.setViewAdapter(new ViewSlider(this, itemList));
+        // slider.setFragmentAdapter(new FragmentAdapter(getSupportFragmentManager(), fragmentList));
+        slider.setIndicator(new DotIndicator(this));
+        slider.setPageTransformer(new DepthPageTransformer());
     }
 }

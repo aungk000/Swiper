@@ -14,13 +14,13 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.aungkooo.slider.SliderAdapter;
+import me.aungkooo.slider.ViewAdapter;
 
 /**
  * Created by Ko Oo on 25/5/2018.
  */
 
-public class ImageSlider extends SliderAdapter<HeaderItem>
+public class ViewSlider extends ViewAdapter<HeaderItem>
 {
     @BindView(R.id.img_header)
     ImageView imgHeader;
@@ -29,11 +29,11 @@ public class ImageSlider extends SliderAdapter<HeaderItem>
     @BindView(R.id.card_view_header)
     CardView cardViewHeader;
 
-    public ImageSlider(Context context) {
+    public ViewSlider(Context context) {
         super(context);
     }
 
-    public ImageSlider(Context context, ArrayList<HeaderItem> itemList) {
+    public ViewSlider(Context context, ArrayList<HeaderItem> itemList) {
         super(context, itemList);
     }
 
@@ -46,9 +46,8 @@ public class ImageSlider extends SliderAdapter<HeaderItem>
     }
 
     @Override
-    public void onBindView(ViewGroup container, int position) {
-        final HeaderItem item = getItem(position);
-
+    public void onBindView(ViewGroup container, final HeaderItem item, int position)
+    {
         Picasso.with(getContext()).load(item.getImageResource())
                 .centerCrop().resize(720, 720).into(imgHeader);
         txtHeader.setText(item.getTitle());

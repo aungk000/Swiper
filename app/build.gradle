@@ -25,6 +25,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$buildVersion"
     implementation "com.android.support:support-v4:$buildVersion"
+    implementation "com.android.support:design:$buildVersion"
     implementation "com.android.support:cardview-v7:$buildVersion"
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation "com.jakewharton:butterknife:$butterknifeVersion"
