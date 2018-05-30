@@ -79,6 +79,18 @@ You can set your custom indicator as
 
 ![screenrecord](/resource/custom_indicator.gif)
 
+You can also use other opensource indicator libraries such as [InkPageIndicator](https://github.com/DavidPacioianu/InkPageIndicator).
+
+```java
+    inkPageIndicator.setViewPager(slider.getViewPager());
+````
+
+Other awesome indicators are:
+
+[SpringIndicator](https://github.com/chenupt/SpringIndicator)
+Jake Wharton's [ViewPagerIndicator](https://github.com/JakeWharton/ViewPagerIndicator)
+[ExtensiblePageIndicator](https://github.com/merhold/extensible-page-indicator)
+
 Page Transformers
 -----------------
 There are two default page transformers: *DepthPageTransformer* and *ZoomOutPageTransformer*
