@@ -87,9 +87,9 @@ You can also use other opensource indicator libraries such as [InkPageIndicator]
 
 Other awesome indicators are:
 
-[SpringIndicator](https://github.com/chenupt/SpringIndicator)
-Jake Wharton's [ViewPagerIndicator](https://github.com/JakeWharton/ViewPagerIndicator)
-[ExtensiblePageIndicator](https://github.com/merhold/extensible-page-indicator)
+>[SpringIndicator](https://github.com/chenupt/SpringIndicator)
+>Jake Wharton's [ViewPagerIndicator](https://github.com/JakeWharton/ViewPagerIndicator)
+>[ExtensiblePageIndicator](https://github.com/merhold/extensible-page-indicator)
 
 Page Transformers
 -----------------
