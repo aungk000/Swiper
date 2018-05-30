@@ -1,5 +1,5 @@
 # Slider
-Android library for sliding views with default indicators and view transitions.
+Android library for sliding views and fragments with default indicators and view transitions.
 
 Usage
 -----
@@ -18,8 +18,9 @@ minSdkVersion = '21'
 Example
 -------
 
-First, You need to bind your views with new SliderAdapter
+For views, use *ViewAdapter*.
 
+```java
     @Override
     public View onCreateView(ViewGroup container) {
         View view = createView(R.layout.item_view, container);
@@ -30,27 +31,37 @@ First, You need to bind your views with new SliderAdapter
     public void onBindView(ViewGroup container, int position) {
         // bind your views here
     }
+```
 
+For fragments, use *FragmentAdapter*.
+    
 In MainActivity.java
 
+```java
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sliderHeader.setAdapter(new ImageSlider(this, itemList));
-        sliderHeader.setIndicator(new DotIndicator());
-        sliderHeader.setPageTransformer(new DepthPageTransformer());
+	  // For ViewAdapter
+        slider.setViewAdapter(new ViewSlider(this, itemList));
+	  // For FragmentAdapter
+	  slider.setFragmentAdapter(new FragmentAdapter(getSupportFragmentManager(), fragmentList));
+	  
+        slider.setIndicator(new DotIndicator());
+        slider.setPageTransformer(new DepthPageTransformer());
     }
+```
     
 In activity_main.xml
 
+```xml
     <me.aungkooo.slider.Slider
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+```
 
-	  
 Indicators
 ----------
 There are two default indicators: *DotIndicator* and *BarIndicator*
