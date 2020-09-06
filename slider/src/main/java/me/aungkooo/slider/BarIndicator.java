@@ -1,8 +1,9 @@
 package me.aungkooo.slider;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by Ko Oo on 26/5/2018.

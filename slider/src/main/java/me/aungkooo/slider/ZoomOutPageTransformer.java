@@ -1,8 +1,9 @@
 package me.aungkooo.slider;
 
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by Ko Oo on 26/5/2018.
@@ -10,8 +11,8 @@ import android.view.View;
 
 public class ZoomOutPageTransformer implements ViewPager.PageTransformer
 {
-    private float MIN_SCALE = 0.85f;
-    private float MIN_ALPHA = 0.5f;
+    private final float MIN_SCALE = 0.85f;
+    private final float MIN_ALPHA = 0.5f;
 
     @Override
     public void transformPage(@NonNull View page, float position) {
