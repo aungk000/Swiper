@@ -19,7 +19,7 @@ import me.aungkooo.slider.FragmentAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final boolean showViewSlider = true;
+    private final boolean showViewSlider = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
