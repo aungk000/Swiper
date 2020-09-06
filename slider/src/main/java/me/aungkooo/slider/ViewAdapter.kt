@@ -16,8 +16,6 @@ abstract class ViewAdapter<V : View?, OBJ> : PagerAdapter {
     val context: Context
     var itemList: List<OBJ>
         private set
-    var view: V? = null
-        private set
 
     constructor(context: Context) {
         this.context = context
@@ -44,7 +42,7 @@ abstract class ViewAdapter<V : View?, OBJ> : PagerAdapter {
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        view = onCreateView(container)
+        val view = onCreateView(container)
         val item = getItem(position)
         onBindView(container, view, item, position)
         container.addView(view)
@@ -63,6 +61,7 @@ abstract class ViewAdapter<V : View?, OBJ> : PagerAdapter {
         container.removeView(`object` as View)
     }
 
-    abstract fun onCreateView(container: ViewGroup?): V
-    abstract fun onBindView(container: ViewGroup?, view: V?, item: OBJ, position: Int)
+    abstract fun onCreateView(container: ViewGroup): V
+
+    abstract fun onBindView(container: ViewGroup, view: V, item: OBJ, position: Int)
 }
