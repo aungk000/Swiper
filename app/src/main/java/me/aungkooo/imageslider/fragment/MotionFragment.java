@@ -1,55 +1,48 @@
 package me.aungkooo.imageslider.fragment;
 
-import android.graphics.Color;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import me.aungkooo.imageslider.R;
+import me.aungkooo.imageslider.databinding.FragmentMotionBinding;
 
 /**
  * Created by User on 30/5/2018.
  */
 
-public class MotionFragment extends Fragment
-{
-    @BindView(R.id.img_motion)
-    ImageView imgMotion;
-    @BindView(R.id.txt_motion)
-    TextView txtMotion;
-    @BindView(R.id.relative_layout_motion)
-    RelativeLayout relativeLayoutMotion;
-    Unbinder unbinder;
+public class MotionFragment extends Fragment {
+
+    @Nullable
+    private FragmentMotionBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_motion, container, false);
-        unbinder = ButterKnife.bind(this, view);
+        binding = FragmentMotionBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-        txtMotion.setText(R.string.material_design_principles_motion);
-        Picasso.with(getContext()).load(R.drawable.materialdesign_principles_motion).into(imgMotion);
-        relativeLayoutMotion.setBackgroundColor(Color.parseColor("#ffffff"));
-
+        binding.txtMotion.setText(R.string.material_design_principles_motion);
+        Context context = getContext();
+        if (context != null) {
+            Picasso.with(context).load(R.drawable.materialdesign_principles_motion).into(binding.imgMotion);
+            binding.relativeLayoutMotion.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
+        }
         return view;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        binding = null;
     }
 }

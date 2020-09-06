@@ -1,55 +1,47 @@
 package me.aungkooo.imageslider.fragment;
 
-import android.graphics.Color;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import me.aungkooo.imageslider.R;
+import me.aungkooo.imageslider.databinding.FragmentMetaphorBinding;
 
 /**
  * Created by User on 30/5/2018.
  */
 
-public class MetaphorFragment extends Fragment
-{
-    @BindView(R.id.img_metaphor)
-    ImageView imgMetaphor;
-    @BindView(R.id.txt_metaphor)
-    TextView txtMetaphor;
-    @BindView(R.id.relative_layout_metaphor)
-    RelativeLayout relativeLayoutMetaphor;
-    Unbinder unbinder;
+public class MetaphorFragment extends Fragment {
+    @Nullable
+    private FragmentMetaphorBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_metaphor, container, false);
-        unbinder = ButterKnife.bind(this, view);
+        binding = FragmentMetaphorBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-        txtMetaphor.setText(R.string.material_design_principles_metaphor);
-        Picasso.with(getContext()).load(R.drawable.materialdesign_principles_metaphor).into(imgMetaphor);
-        relativeLayoutMetaphor.setBackgroundColor(Color.parseColor("#03a9f4"));
-
+        binding.txtMetaphor.setText(R.string.material_design_principles_metaphor);
+        Context context = getContext();
+        if (context != null) {
+            Picasso.with(getContext()).load(R.drawable.materialdesign_principles_metaphor).into(binding.imgMetaphor);
+            binding.relativeLayoutMetaphor.setBackgroundColor(ContextCompat.getColor(context, R.color.light_blue));
+        }
         return view;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        binding = null;
     }
 }

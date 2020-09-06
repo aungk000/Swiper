@@ -1,48 +1,41 @@
 package me.aungkooo.imageslider.fragment;
 
-import android.graphics.Color;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import me.aungkooo.imageslider.R;
+import me.aungkooo.imageslider.databinding.FragmentBoldBinding;
 
 /**
  * Created by User on 30/5/2018.
  */
 
-public class BoldFragment extends Fragment
-{
-    @BindView(R.id.img_bold)
-    ImageView imgBold;
-    @BindView(R.id.txt_bold)
-    TextView txtBold;
-    @BindView(R.id.relative_layout_bold)
-    RelativeLayout relativeLayoutBold;
-    Unbinder unbinder;
+public class BoldFragment extends Fragment {
+    @Nullable
+    private FragmentBoldBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_bold, container, false);
-        unbinder = ButterKnife.bind(this, view);
+        binding = FragmentBoldBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-        txtBold.setText(R.string.material_design_principles_bold);
-        Picasso.with(getContext()).load(R.drawable.materialdesign_principles_bold).into(imgBold);
-        relativeLayoutBold.setBackgroundColor(Color.parseColor("#ffd180"));
+        binding.txtBold.setText(R.string.material_design_principles_bold);
+        Context context = getContext();
+        if (context != null) {
+            Picasso.with(getContext()).load(R.drawable.materialdesign_principles_bold).into(binding.imgBold);
+            binding.relativeLayoutBold.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow));
+        }
 
         return view;
     }
@@ -50,6 +43,6 @@ public class BoldFragment extends Fragment
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        binding = null;
     }
 }

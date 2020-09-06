@@ -9,23 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ko Oo on 25/5/2018.
  */
 
-public abstract class ViewAdapter<OBJ> extends PagerAdapter
-{
-    private Context context;
-    private ArrayList<OBJ> itemList;
-    private View view;
+public abstract class ViewAdapter<V extends View, OBJ> extends PagerAdapter {
+    private final Context context;
+    private List<OBJ> itemList;
+    private V view;
 
     public ViewAdapter(Context context) {
         this.context = context;
         this.itemList = new ArrayList<>();
     }
 
-    public ViewAdapter(Context context, ArrayList<OBJ> itemList) {
+    public ViewAdapter(Context context, List<OBJ> itemList) {
         this.context = context;
         this.itemList = itemList;
     }
@@ -35,7 +35,7 @@ public abstract class ViewAdapter<OBJ> extends PagerAdapter
         notifyDataSetChanged();
     }
 
-    public ArrayList<OBJ> getItemList() {
+    public List<OBJ> getItemList() {
         return itemList;
     }
 
@@ -47,22 +47,21 @@ public abstract class ViewAdapter<OBJ> extends PagerAdapter
         return context;
     }
 
-    public View getView() {
+    public V getView() {
         return view;
     }
 
-    public View createView(@LayoutRes int resId, ViewGroup container) {
-        return LayoutInflater.from(context).inflate(resId, container, false);
+    @SuppressWarnings("unchecked")
+    public V createView(@LayoutRes int resId, ViewGroup container) {
+        return (V) LayoutInflater.from(context).inflate(resId, container, false);
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         view = onCreateView(container);
-
         final OBJ item = getItem(position);
-        onBindView(container, item, position);
-
+        onBindView(container, view, item, position);
         container.addView(view);
         return view;
     }
@@ -82,6 +81,7 @@ public abstract class ViewAdapter<OBJ> extends PagerAdapter
         container.removeView((View) object);
     }
 
-    public abstract View onCreateView(ViewGroup container);
-    public abstract void onBindView(ViewGroup container, final OBJ item, int position);
+    public abstract V onCreateView(ViewGroup container);
+
+    public abstract void onBindView(ViewGroup container, final V view, final OBJ item, int position);
 }

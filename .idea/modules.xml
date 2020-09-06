@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Slider.iml" filepath="$PROJECT_DIR$/Slider.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/slider/slider.iml" filepath="$PROJECT_DIR$/slider/slider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ViewPagerCarousel.iml" filepath="$PROJECT_DIR$/.idea/modules/ViewPagerCarousel.iml" group="ViewPagerCarousel" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="ViewPagerCarousel/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/slider/slider.iml" filepath="$PROJECT_DIR$/.idea/modules/slider/slider.iml" group="ViewPagerCarousel/slider" />
     </modules>
   </component>
 </project>
