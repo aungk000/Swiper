@@ -10,11 +10,12 @@ import java.util.*
  */
 @Suppress("unused")
 class FragmentAdapter : FragmentStatePagerAdapter {
+
     private var fragmentList: ArrayList<Fragment>? = null
 
-    constructor(fm: FragmentManager?) : super(fm)
+    constructor(fm: FragmentManager) : super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
 
-    constructor(fm: FragmentManager?, fragmentList: ArrayList<Fragment>?) : super(fm) {
+    constructor(fm: FragmentManager, fragmentList: ArrayList<Fragment>?) : super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         this.fragmentList = fragmentList
     }
 
@@ -32,6 +33,6 @@ class FragmentAdapter : FragmentStatePagerAdapter {
     }
 
     override fun getCount(): Int {
-        return fragmentList!!.size
+        return fragmentList?.size ?: 0
     }
 }

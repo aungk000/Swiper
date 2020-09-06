@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (showViewSlider) {
-            binding.slider.viewAdapter = ViewBindingSliderAdapter(this, itemList)
+            binding.slider.viewAdapter = SliderAdapter(this, itemList)
         } else {
             val fragmentList = ArrayList<Fragment>()
             val fragments = arrayOf(BoldFragment(), MetaphorFragment(), MotionFragment())

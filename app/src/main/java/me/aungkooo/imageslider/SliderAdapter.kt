@@ -6,7 +6,7 @@ import android.widget.Toast
 import com.squareup.picasso.Picasso
 import me.aungkooo.slider.ViewAdapter
 
-class ViewBindingSliderAdapter(context: Context, itemList: List<HeaderItem>) : ViewAdapter<HeaderItemView, HeaderItem>(context, itemList) {
+class SliderAdapter(context: Context, itemList: List<HeaderItem>) : ViewAdapter<HeaderItemView, HeaderItem>(context, itemList) {
 
     override fun onCreateView(container: ViewGroup): HeaderItemView {
         return HeaderItemView(context)
