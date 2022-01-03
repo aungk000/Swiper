@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="Indicator">
-        <attr name="iconActive" format="reference"/>
-        <attr name="iconInactive" format="reference"/>
-    </declare-styleable>
-</resources>

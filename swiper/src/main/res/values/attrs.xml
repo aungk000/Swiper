@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Swiper">
+        <attr name="swiperIndicatorActive" format="reference"/>
+        <attr name="swiperIndicatorInactive" format="reference"/>
+        <attr name="swiperPageTransformer" format="enum">
+            <enum name="depthPageTransformer" value="1"/>
+            <enum name="zoomOutPageTransformer" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>
