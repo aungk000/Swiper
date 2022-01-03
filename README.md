@@ -3,7 +3,7 @@ Android library for swiping views and fragments with default indicators and view
 
 Usage
 -----
-Import the library ('swiper') from your project.
+Import the library ('swiper') or aar file to your project.
 
 In app/gradle.build
 
