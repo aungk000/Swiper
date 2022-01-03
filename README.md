@@ -1,15 +1,15 @@
-# Slider
-Android library for sliding views and fragments with default indicators and view transitions.
+# Swiper
+Android library for swiping views and fragments with default indicators and view transitions.
 
 Usage
 -----
-Import the library ('slider') from your project.
+Import the library ('swiper') from your project.
 
 In app/gradle.build
 
 ```groovy
 dependencies {
-    implementation project(':slider')
+    implementation project(path: ':swiper')
 }
 ```
 
@@ -20,46 +20,51 @@ Example
 
 For views, use *ViewAdapter*.
 
-```java
-    @Override
-    public View onCreateView(ViewGroup container) {
-        View view = createView(R.layout.item_view, container);
-        return view;
+```kotlin
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Swiper.ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.view_item, parent, false)
+        return Swiper.ViewHolder(view)
     }
 
-    @Override
-    public void onBindView(ViewGroup container, int position) {
-        // bind your views here
+    override fun onBindViewHolder(holder: Swiper.ViewHolder, position: Int) {
+    	//Bind your view here
+        }
     }
 ```
 
-For fragments, use *FragmentAdapter*.
+For fragments,
     
-In MainActivity.java
+In MainActivity.kt
 
-```java
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+```kotlin
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-	  // For ViewAdapter
-        slider.setViewAdapter(new ViewSlider(this, itemList));
-	  // For FragmentAdapter
-	  slider.setFragmentAdapter(new FragmentAdapter(getSupportFragmentManager(), fragmentList));
-	  
-        slider.setIndicator(new DotIndicator());
-        slider.setPageTransformer(new DepthPageTransformer());
+        val swiper: Swiper = findViewById(R.id.swiper)
+	
+        swiper.setAdapter(Swiper.FragmentAdapter(this, fragmentList))
+        //swiper.setAdapter(ViewItemAdapter(this, itemList))
+
+        //swiper.setIndicator(Swiper.DotIndicator(this))
+        //swiper.setPageTransformer(Swiper.DepthPageTransformer())
     }
 ```
     
 In activity_main.xml
 
 ```xml
-    <me.aungkooo.slider.Slider
-        android:id="@+id/slider"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <com.losersclub.swiper.Swiper
+        android:id="@+id/swiper"
+        app:swiperPageTransformer="depthPageTransformer"
+        app:swiperIndicatorActive="@drawable/dot_active"
+        app:swiperIndicatorInactive="@drawable/dot_inactive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
 ```
 
 Indicators
@@ -72,17 +77,16 @@ There are two default indicators: *DotIndicator* and *BarIndicator*
 
 **Custom Indicator**
 
-You can set your custom indicator as
-
-	slider.setIndicator(new Indicator(
-                this, R.drawable.ic_active, R.drawable.ic_inactive));
+You can set your custom indicators in xml or in code.
 
 ![screenrecord](/resource/custom_indicator.gif)
+
+**I haven't tested other indicator libraries with update.**
 
 You can also use other opensource indicator libraries such as [InkPageIndicator](https://github.com/DavidPacioianu/InkPageIndicator).
 
 ```java
-    inkPageIndicator.setViewPager(slider.getViewPager());
+    inkPageIndicator.setViewPager(swiper.viewPager2);
 ````
 
 Other awesome indicators are:
@@ -97,11 +101,12 @@ There are two default page transformers: *DepthPageTransformer* and *ZoomOutPage
 
 You can create your own page transformer as
 
-```java
-public class YourTransformer implements ViewPager.PageTransformer {
-    @Override
-    public void transformPage(@NonNull View page, float position) {
-        // animate view here
+```kotlin
+class YourPageTransformer : ViewPager2.PageTransformer {
+        override fun transformPage(view: View, position: Float) {
+            view.apply {
+	    	// Transform your page here
+            }
+        }
     }
-}
 ```
